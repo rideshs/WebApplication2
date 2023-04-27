@@ -1,0 +1,37 @@
+﻿@model IEnumerable<StudentPrediction>
+
+@{
+    ViewData["Title"] = "Prediction";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Course ID</th>
+                <th>Subject ID</th>
+                <th>Success</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prediction in Model)
+            {
+                <tr>
+                    <td>@prediction.StudentId</td>
+                    <td>@prediction.CourseId</td>
+                    <td>@prediction.SubjectId</td>
+                    <td>@(prediction.Success ? "Yes" : "No")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No predictions available.</p>
+}
+

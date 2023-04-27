@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FinalMark>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Course ID</th>
+            <th>Subject ID</th>
+            <th>Marks</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var finalMark in Model)
+        {
+            <tr>
+                <td>@finalMark.StudentId</td>
+                <td>@finalMark.CourseId</td>
+                <td>@finalMark.SubjectId</td>
+                <td>@finalMark.Marks</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>Select a CSV file to upload:</p>
+
+<form method="post" enctype="multipart/form-data" action="@Url.Action("UploadMarksData", "Marks")">
+    <div class="form-group">
+        <input type="file" name="file" class="form-control-file" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+
+
+@*@if (Model != null && Model.Any())
+{
+    <h2>Predictions</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Course ID</th>
+                <th>Subject ID</th>
+                <th>Success</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prediction in Model)
+            {
+                <tr>
+                    <td>@prediction.StudentId</td>
+                    <td>@prediction.CourseId</td>
+                    <td>@prediction.SubjectId</td>
+                    <td>@(prediction.Success ? "Yes" : "No")</td> 
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+*@
